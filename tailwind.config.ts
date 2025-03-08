@@ -7,7 +7,6 @@ const config = {
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
-    "*.{js,ts,jsx,tsx,mdx}",
   ],
   prefix: "",
   theme: {
@@ -21,6 +20,9 @@ const config = {
     extend: {
       colors: {
         border: "hsl(var(--border))",
+        borderColor: {
+          border: 'rgb(var(--border))',
+        },
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
@@ -52,6 +54,10 @@ const config = {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        colors: {
+          background: 'rgb(var(--background))',
+          foreground: 'rgb(var(--foreground))',
         },
       },
       borderRadius: {

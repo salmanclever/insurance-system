@@ -120,7 +120,7 @@ export default function DynamicForm({ onSubmitSuccess }: DynamicFormProps) {
 
     const defaultValues: Record<string, any> = {}
 
-    formStructure.fields.forEach((field) => {
+    formStructure.fields.forEach((field: any) => {
       switch (field.type) {
         case "text":
         case "email":
@@ -163,17 +163,17 @@ export default function DynamicForm({ onSubmitSuccess }: DynamicFormProps) {
   }, [formStructure, methods])
 
   // Watch form values to handle conditional fields
-  const formValues = methods.watch()
+  const formValues: Record<string, any> = methods.watch()
 
   // Filter fields based on conditions
   const getVisibleFields = () => {
     if (!formStructure?.fields) return []
 
-    return formStructure.fields.filter((field) => {
+    return formStructure.fields.filter((field: any) => {
       if (!field.condition) return true
 
       const { dependsOn, value } = field.condition
-      return formValues[dependsOn] === value
+      return formValues[dependsOn as keyof typeof formValues] === value
     })
   }
 
@@ -262,7 +262,7 @@ export default function DynamicForm({ onSubmitSuccess }: DynamicFormProps) {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {getVisibleFields().map((field) => (
+                  {getVisibleFields().map((field: any) => (
                     <DynamicField key={field.id} field={field} />
                   ))}
 
